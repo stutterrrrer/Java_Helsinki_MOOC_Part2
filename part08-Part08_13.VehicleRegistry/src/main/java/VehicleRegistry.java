@@ -32,8 +32,7 @@ public class VehicleRegistry {
 
 	public void printOwners() {
 		ArrayList<String> printed = new ArrayList<>();
-		for (LicensePlate licensePlate : registry.keySet()) {
-			String owner = registry.get(licensePlate);
+		for (String owner : registry.values()) {
 			if (!printed.contains(owner)) {
 				System.out.println(owner);
 				printed.add(owner);
