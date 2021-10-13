@@ -11,11 +11,8 @@ public class ShoppingCart {
 	}
 
 	public void add(String product, int price) {
-		if (!cart.containsKey(product)) {
-			cart.put(product, new Item(product, 1, price));
-		} else {
-			cart.get(product).increaseQuantity();
-		}
+		cart.putIfAbsent(product, new Item(product, 0, price));
+		cart.get(product).increaseQuantity();
 	}
 
 	public int price() {
