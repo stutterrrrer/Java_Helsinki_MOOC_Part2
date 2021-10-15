@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 
 public class Hold {
@@ -21,21 +19,14 @@ public class Hold {
 	}
 
 	public int totalWeight() {
-		int summa = 0;
-		int indeksi = 0;
-		while (indeksi < this.suitcases.size()) {
-			summa += this.suitcases.get(indeksi).totalWeight();
-			indeksi++;
-		}
-		return summa;
+		return suitcases.stream()
+				.map(Suitcase::totalWeight)
+				.reduce(0, (sum, individualWeight) -> sum + individualWeight);
 	}
 
 	public void printItems() {
-		int indeksi = 0;
-		while (indeksi < this.suitcases.size()) {
-			this.suitcases.get(indeksi).printItems();
-			indeksi++;
-		}
+		suitcases.stream()
+				.forEach(Suitcase::printItems);
 	}
 
 	@Override
