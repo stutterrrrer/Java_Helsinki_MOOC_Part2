@@ -1,41 +1,48 @@
+public class Card implements Comparable<Card> {
 
+	private int value;
+	private Suit suit;
 
-public class Card {
+	public Card(int value, Suit suit) {
+		if (value < 2 || value > 14) {
+			throw new IllegalArgumentException("Card value must be in range 2...14.");
+		}
 
-    private int value;
-    private Suit suit;
+		this.value = value;
+		this.suit = suit;
+	}
 
-    public Card(int value, Suit suit) {
-        if (value < 2 || value > 14) {
-            throw new IllegalArgumentException("Card value must be in range 2...14.");
-        }
+	@Override
+	public String toString() {
+		String cardValue = "" + value;
+		if (value == 11) {
+			cardValue = "J";
+		} else if (value == 12) {
+			cardValue = "Q";
+		} else if (value == 13) {
+			cardValue = "K";
+		} else if (value == 14) {
+			cardValue = "A";
+		}
 
-        this.value = value;
-        this.suit = suit;
-    }
+		return suit + " " + cardValue;
+	}
 
-    @Override
-    public String toString() {
-        String cardValue = "" + value;
-        if(value == 11) {
-            cardValue = "J";
-        } else if (value == 12) {
-            cardValue = "Q";
-        } else if (value == 13) {
-            cardValue = "K";
-        } else if (value == 14) {
-            cardValue = "A";
-        }
-        
-        return suit + " " + cardValue;
-    }
+	public int getValue() {
+		return value;
+	}
 
-    public int getValue() {
-        return value;
-    }
+	public Suit getSuit() {
+		return suit;
+	}
 
-    public Suit getSuit() {
-        return suit;
-    }
+	@Override
+	public int compareTo(Card compared) {
+		if (this.value == compared.value) {
+			// use enum's built-in compareTo, which returns this.ordinal() - compared.ordinal().
+			return this.suit.compareTo(compared.suit);
+		}
+		return this.value - compared.value;
+	}
 
 }
