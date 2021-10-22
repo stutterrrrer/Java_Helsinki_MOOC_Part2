@@ -3,15 +3,15 @@ import java.util.ArrayList;
 
 public class Program {
 
-    public static void main(String[] args) {
-        LotteryRow row = new LotteryRow();
-        ArrayList<Integer> lotteryNumbers = row.numbers();
+	public static void main(String[] args) {
+		LotteryRow row = new LotteryRow();
+		ArrayList<Integer> lotteryNumbers = row.numbers();
 
-        System.out.println("Lottery numbers:");
-        for (Integer number : lotteryNumbers) {
-            System.out.print(number + " ");
-        }
-        System.out.println("");
-    }
+		System.out.println("Lottery numbers:");
+		for (Integer number : lotteryNumbers) {
+			System.out.print(number + " ");
+		}
+		System.out.println("");
+	}
 }
 
